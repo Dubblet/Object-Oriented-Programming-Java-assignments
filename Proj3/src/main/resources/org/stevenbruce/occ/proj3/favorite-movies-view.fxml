@@ -6,12 +6,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22"
-            fx:controller="org.stevenbruce.occ.proj3.FavoriteMoviesController">
+<?import javafx.scene.control.ListCell?>
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.stevenbruce.occ.proj3.FavoriteMoviesController">
    <children>
       <Label layoutX="164.0" layoutY="14.0" text="Favorite Movies">
          <font>
@@ -20,21 +21,34 @@
       </Label>
       <ButtonBar buttonMinWidth="100.0" layoutY="640.0" prefHeight="60.0" prefWidth="500.0">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#onClickAdd" text="Add" />
-            <Button mnemonicParsing="false" onAction="#onClickRemove" text="Remove" />
-            <Button mnemonicParsing="false" onAction="#onClickSave" text="Save" />
-          <Button mnemonicParsing="false" onAction="#onClickLoad" text="Load" />
+            <Button mnemonicParsing="false" onAction="#onClickAdd" text="Add">
+               <tooltip>
+                  <Tooltip text="Adds what is typed in to the list of movies" />
+               </tooltip></Button>
+            <Button mnemonicParsing="false" onAction="#onClickRemove" text="Remove">
+               <tooltip>
+                  <Tooltip text="Deletes the selected row(s) from the list of movies" />
+               </tooltip></Button>
+            <Button mnemonicParsing="false" onAction="#onClickSave" text="Save">
+               <tooltip>
+                  <Tooltip text="Saves the list of movies as a file movies.txt" />
+               </tooltip></Button>
+          <Button mnemonicParsing="false" onAction="#onClickLoad" text="Load">
+               <tooltip>
+                  <Tooltip text="Loads the movies.txt file into the list of movies" />
+               </tooltip></Button>
         </buttons>
          <padding>
             <Insets right="35.0" />
          </padding>
       </ButtonBar>
-      <ListView layoutY="50.0" prefHeight="500.0" prefWidth="500.0" />
+      <ListView fx:id="listOfMovies" layoutY="50.0" prefHeight="500.0" prefWidth="500.0" />
       <Pane layoutX="50.0" layoutY="560.0" prefHeight="60.0" prefWidth="400.0">
          <children>
             <Label layoutX="14.0" layoutY="23.0" text="Enter Movie Name:" />
-            <TextField fx:id="txtNameEnter" layoutX="129.0" layoutY="19.0" onAction="#typeMovieName" prefHeight="23.0" prefWidth="262.0" />
+            <TextField fx:id="txtNameEnter" layoutX="129.0" layoutY="19.0" prefHeight="23.0" prefWidth="262.0" />
          </children>
       </Pane>
+      <Label fx:id="deleteBtnReminder" layoutX="84.0" layoutY="620.0" text="Please select one or more movies from the list to remove." textAlignment="CENTER" visible="false" />
    </children>
 </AnchorPane>
