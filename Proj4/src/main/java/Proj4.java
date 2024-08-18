@@ -1,25 +1,19 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class Proj4 {
     public static void main(String[] args) {
-        Connection connection;
-        try {
-            connection = MusicDB.getConnection();
-            Statement statement = connection.createStatement();
+        MusicDB musicDB = new MusicDB();
 
-            String query = "SELECT * FROM ARTISTS";
-
-            ResultSet artists = statement.executeQuery(query);
-
-            while(artists.next()) {
-                System.out.println(artists.getString("name"));
-            }
-            artists.close();
-        } catch (SQLException ex) {
-            System.out.println("Error accessing database: " + ex.getMessage());
+        System.out.println("Artists and Albums Listing");
+        System.out.println("\nArtists\n-------");
+        for (Artist artist : musicDB.artistslist()) {
+            artist.printArtists();
+        }
+        System.out.println("\nAlbums\n------");
+        for (Album album : musicDB.albumList()) {
+            album.printAlbums();
+        }
+        System.out.println("\nAlbums by Artist\n----------------");
+        for (Artist artist : musicDB.artistslist()) {
+            artist.printAlbumAndArtist();
         }
     }
 }
