@@ -1,17 +1,22 @@
 public class Album {
+    // Fields
     private String name;
     private int artistID;
     private int albumID;
 
-    public Album() {
-    }
-
+    /**
+     * Constructor with all three params.
+     * @param name The name of the album.
+     * @param artistID ID # in the table of the artist linked to this album.
+     * @param albumID ID # in the table, each album has a unique album ID.
+     */
     public Album(String name, int artistID, int albumID) {
         this.name = name;
         this.artistID = artistID;
         this.albumID = albumID;
     }
 
+    // Getters and Setters for each field.
     public String getName() {
         return name;
     }
@@ -36,6 +41,9 @@ public class Album {
         this.albumID = albumID;
     }
 
+    /**
+     * Method to print out the album's name.
+     */
     public void printAlbums() {
         System.out.println(getName());
     }
